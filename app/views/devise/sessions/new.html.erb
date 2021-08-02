@@ -1,0 +1,20 @@
+<h2> ＜ログイン＞</h2>
+<div class='login-flash-message'>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+</div>
+<%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+  <div class='form-text-wrap'>
+    <label class="form-text">ニックネーム</label>
+  </div>
+  <%= f.text_field :nickname, autofocus: true %>
+
+  <div class='form-text-wrap'>
+    <label class="form-text">パスワード</label>
+  </div>
+  <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
+
+  <div class='login-btn'>
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
