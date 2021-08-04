@@ -2,6 +2,9 @@
     <div class='nav'>
     <ul class='lists-left'>
       <li><%= link_to 'ホーム', root_path, class: "home" %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'ルーム作成', new_room_path, class: "new-room" %></li>
+      <% end %>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>

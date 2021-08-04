@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+<div class='chat-room-form'>
+  <h2>＜新規チャットルーム＞</h2>
+  <%=form_with model: @room, local: true do |f|%>
+    <div class='chat-room-form_field'>
+      <div class='chat-room-form_field--left'>
+        <%= f.label :チャットルーム名, class: 'chat-room-form_label'%>
+      </div>
+      <div class='chat-room-form_field--right'>
+        <%= f.text_field :name, class: 'chat_room_name chat-room-form_input' %>
+      </div>
+    </div>
+
+    <div class='chat-room-form_field'>
+      <div class='chat-room-form_field--left'>
+        <label class='chat-room-form_label' for='chat_room_チャットメンバー'>チャットメンバー</label>
+      </div>
+      <div class='chat-room-form_field--right'>
+        <select name="room[user_ids][]">
+          <option value="">チャットするユーザーを選択してください</option>
+          <% User.where.not(id: current_user.id).each do |user| %>
+            <option value=<%= user.id %>><%= user.nickname %></option>
+          <% end %>
+        </select>
+        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+      </div>
+      <div class="chat-room-form_attention">※選択しなければ自分のみのルームになります</div>
+    </div>
+    <div class='chat-room-form_field'>
+        <%= f.submit 'ルーム作成', class: 'chat-room-form_action-btn'%>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>
