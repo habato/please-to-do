@@ -2,11 +2,13 @@
   <div class="request-user">
     <%= request.user.nickname %>
   </div>
-  <div class="request-title">
-    <%= request.title %>
-  </div>
-  <div class="request-content">
-    <%= request.content %>
-  </div>
-  <%= image_tag request.image.variant(resize: '200x200'), class: 'request-image' if request.image.attached? %>
+  <%= link_to room_request_path(@room,request.id) do %>
+    <div class="request-title">
+      <%= request.title %>
+    </div>
+    <div class="request-content">
+      <%= request.content %>
+    </div>
+    <%= image_tag request.image.variant(resize: '200x200'), class: 'request-image' if request.image.attached? %>
+  <% end %>
 </div>
