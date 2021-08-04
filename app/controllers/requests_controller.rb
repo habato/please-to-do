@@ -22,6 +22,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:title, :content).merge(user_id: current_user.id)
+    params.require(:request).permit(:title, :content, :image).merge(user_id: current_user.id)
   end
 end
