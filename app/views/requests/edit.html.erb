@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+<div class="body">
+  <%= form_with model: [@room, @request], class: 'form', local: true do |f| %>
+    <div class="form-input">
+      <div class="form-input_title">
+        <%= f.text_field :title, class: 'form-request', placeholder: 'title' %>
+      </div>
+      <div class="form-input_content">
+        <%= f.text_field :content, class: 'form-request', placeholder: 'content' %>
+      </div>
+      <label class="form-image">
+        <span class="image-file">画像</span>
+        <%= f.file_field :image, class: 'hidden' %>
+      </label>
+    </div>
+    <%= f.submit '送信', class: 'form-submit' %>
+  <% end %>
+</div>
+<%= render "shared/footer" %>
