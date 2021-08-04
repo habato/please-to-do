@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_room, only: [:index, :new, :create, :edit, :update]
-  before_action :set_request, only: [:show, :edit, :update]
+  before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
     @requests = @room.requests.includes(:user)
@@ -31,6 +31,11 @@ class RequestsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @request.destroy
+    redirect_to room_requests_path(@request.room.id)
   end
 
   private
