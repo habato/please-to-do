@@ -33,13 +33,13 @@ RSpec.describe Request, type: :model do
       it 'roomが紐付いていないと投稿できないこと' do
         @request.room = nil
         @request.valid?
-        expect(@request.errors.full_messages).to include("Room must exist")
+        expect(@request.errors.full_messages).to include('Room must exist')
       end
 
       it 'userが紐付いていないと投稿できないこと' do
         @request.user = nil
         @request.valid?
-        expect(@request.errors.full_messages).to include("User must exist")
+        expect(@request.errors.full_messages).to include('User must exist')
       end
     end
   end

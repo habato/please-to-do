@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   def index
     @room = Room.find(params[:room_id])
-    @requests= @room.requests.includes(:user)
+    @requests = @room.requests.includes(:user)
   end
 
   def new
