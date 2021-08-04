@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
     @room = Room.find(params[:room_id])
     @request = @room.requests.new(request_params)
     if @request.save
-      redirect_to room_request_path(@room)
+      redirect_to room_requests_path(@room)
     else
       render :new
     end
