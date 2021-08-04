@@ -1,5 +1,8 @@
 <%= render "shared/header" %>
 <div class="body">
+  <div class="room-name">
+    <%= @room.name %>
+  </div>
   <%= link_to "お願いする", new_room_request_path, class: "new-request" %>
   <div class="requests">
     <%= render partial: 'shared/request', collection: @requests %>
