@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
   def update
     if @request.update(request_params)
-      redirect_to room_request_path(@room,@request.id)
+      redirect_to room_request_path(@room, @request.id)
     else
       render :edit
     end
