@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class="body">
-  <%= form_with model: [@room, @request], class: 'form', local: true do |f| %>
+  <%= form_with model: @request, class: 'form', local: true do |f| %>
     <div class="form-input">
       <div class="form-input_title">
         <%= f.text_field :title, class: 'form-request', placeholder: 'title' %>

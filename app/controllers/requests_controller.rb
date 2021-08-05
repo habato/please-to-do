@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_room, only: [:index, :new, :create, :edit, :update]
+  before_action :set_room, only: [:index, :new, :create]
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
   def update
     if @request.update(request_params)
-      redirect_to room_request_path(@room, @request.id)
+      redirect_to request_path(@request)
     else
       render :edit
     end
