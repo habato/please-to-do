@@ -3,7 +3,12 @@
   <div class="room-name">
     <%= @room.name %>
   </div>
-  <%= link_to "お願いする", new_room_request_path, class: "new-request" %>
+  <div class="room-delete">
+    <%= link_to "ルームを閉じる", room_path(@room), method: :delete, class: "room-delete_btn"%>
+  </div>
+  <div class="new-request">
+    <%= link_to "お願いする", new_room_request_path, class: "new-request_btn" %>
+  </div>
   <div class="requests">
     <%= render partial: 'shared/request', collection: @requests %>
   </div>
