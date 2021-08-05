@@ -1,5 +1,8 @@
 <%= render "shared/header" %>
 <div class="request-show">
+  <div class="room-return">
+    <%= link_to 'ルームに戻る', room_requests_path(@request.room.id), class: "room-return-btn" %>
+  </div>
   <div class="request">
     <div class='request-image-content'>
       <%= image_tag @request.image.variant(resize: '200x200'), class: 'request-image' if @request.image.attached? %>
