@@ -2,7 +2,7 @@
   <div class="request-user">
     <%= request.user.nickname %>
   </div>
-  <%= link_to room_request_path(@room,request.id) do %>
+  <%= link_to request_path(request) do %>
     <div class="request-title">
       <%= request.title %>
     </div>

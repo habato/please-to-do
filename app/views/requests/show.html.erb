@@ -14,9 +14,14 @@
   </div>
   <% if user_signed_in? %>
     <% if current_user.id == @request.user_id %>
-      <%= link_to "リクエストの編集", edit_room_request_path, method: :get, class: "request-edit-btn" %>
+      <%= link_to "リクエストの編集", edit_request_path, method: :get, class: "request-edit-btn" %>
       <p class="or-text">or</p>
-      <%= link_to "削除", room_request_path(@request.id), method: :delete, class:"request-destroy" %>
+      <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy" %>
+    <% end %>
+    <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
+      <div class='completion'>
+        <%= f.submit "完了" ,class:"completion-btn" %>
+      </div>
     <% end %>
   <% end %>
 </div>
