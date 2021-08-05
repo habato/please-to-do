@@ -9,6 +9,13 @@
     <div class="request-content">
       <%= request.content %>
     </div>
-    <%= image_tag request.image.variant(resize: '200x200'), class: 'request-image' if request.image.attached? %>
+    <div class='request-image-content'>
+      <%= image_tag request.image.variant(resize: '200x200'), class: 'request-image' if request.image.attached? %>
+      <% if request.completion.present? %>
+        <div class='done'>
+          <%= image_tag "done.png", class:"done-image" %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

@@ -1,7 +1,14 @@
 <%= render "shared/header" %>
 <div class="request-show">
   <div class="request">
-    <%= image_tag @request.image.variant(resize: '200x200'), class: 'request-image' if @request.image.attached? %>
+    <div class='request-image-content'>
+      <%= image_tag @request.image.variant(resize: '200x200'), class: 'request-image' if @request.image.attached? %>
+      <% if @request.completion.present? %>
+        <div class="done">
+          <%= image_tag "done.png", class:"done-image" %>
+        </div>
+      <% end %>
+    </div>
     <div class="request-user">
       <%= @request.user.nickname %>
     </div>
@@ -12,16 +19,17 @@
       <%= @request.content %>
     </div>
   </div>
-  <% if user_signed_in? %>
+  <% if @request.completion.blank? %>
     <% if current_user.id == @request.user_id %>
       <%= link_to "リクエストの編集", edit_request_path, method: :get, class: "request-edit-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy" %>
-    <% end %>
-    <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
-      <div class='completion'>
-        <%= f.submit "完了" ,class:"completion-btn" %>
-      </div>
+    <% else %>
+      <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
+        <div class='completion'>
+          <%= f.submit "完了" ,class:"completion-btn" %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
