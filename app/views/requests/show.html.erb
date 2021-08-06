@@ -24,7 +24,7 @@
   </div>
   <% if @request.completion.blank? %>
     <% if current_user.id == @request.user_id %>
-      <%= link_to "リクエストの編集", edit_request_path, method: :get, class: "request-edit-btn" %>
+      <%= link_to "リクエストの編集", edit_request_path(@request.id), method: :get, class: "request-edit-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy" %>
     <% else %>
@@ -34,6 +34,27 @@
         </div>
       <% end %>
     <% end %>
+    <%= form_with model: [@request, @comment],class: 'comment-form', local: true do |f|%>
+      <div class='comment-text-content'>
+        <%= f.text_area :text, class: "comment-text" %>
+      </div>
+      <div class='comment-btn-content'> 
+        <%= f.submit "コメントする" ,class:"comment-btn" %>
+      </div>
+    <% end %>
   <% end %>
+  <h2>＜コメント一覧＞</h2>
+  <div class="comment">
+    <% @comments.each do |comment| %>
+      <li class="comments_list">
+        <div class="commment-name">
+          <%= comment.user.nickname%>
+        </div>
+        <div class="comment-display">
+          <%= comment.text%>
+        </div>
+      </li>
+    <% end %>
+  </div>
 </div>
 <%= render "shared/footer" %>

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   end
   resources :requests, only: [:show, :edit, :update, :destroy] do
     resources :completions, only: :create
+    resources :comments, only: :create
   end
 end
