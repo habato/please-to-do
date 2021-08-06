@@ -52,6 +52,9 @@
         </div>
         <div class="comment-display">
           <%= comment.text%>
+          <% if current_user.id == comment.user_id %>
+           <%= link_to "削除", request_comment_path(@request, comment), method: :delete, class:"comment-destroy" %>
+          <% end %>
         </div>
       </li>
     <% end %>
