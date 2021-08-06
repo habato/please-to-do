@@ -20,6 +20,8 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @request.comments.includes(:user)
   end
 
   def edit

@@ -16,4 +16,5 @@ class User < ApplicationRecord
   has_many :rooms, through: :room_users
   has_many :requests
   has_many :completions
+  has_many :comments
 end
