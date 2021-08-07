@@ -1,6 +1,9 @@
 class RequestsController < ApplicationController
   before_action :set_room, only: [:index, :new, :create]
+  before_action :outsider, only: [:index, :new, :create]
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :redirect, only: [:edit, :update, :destroy]
+  before_action :done, only: [:edit, :update, :destroy]
 
   def index
     @requests = @room.requests.includes(:user)
@@ -20,8 +23,12 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
-    @comments = @request.comments.includes(:user)
+    if @request.room.users.exists?(current_user.id)
+      @comment = Comment.new
+      @comments = @request.comments.includes(:user)
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -52,5 +59,17 @@ class RequestsController < ApplicationController
 
   def set_request
     @request = Request.find(params[:id])
+  end
+
+  def outsider
+    redirect_to root_path unless @room.users.exists?(current_user.id)
+  end
+
+  def redirect
+    redirect_to root_path unless current_user.id == @request.user_id
+  end
+
+  def done
+    redirect_to root_path if @request.completion.present?
   end
 end
