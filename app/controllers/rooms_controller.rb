@@ -17,8 +17,12 @@ class RoomsController < ApplicationController
 
   def destroy
     room = Room.find(params[:id])
-    room.destroy
-    redirect_to root_path
+    if room.users.exists?(current_user.id)
+      room.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
