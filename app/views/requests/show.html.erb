@@ -27,12 +27,11 @@
       <%= link_to "リクエストの編集", edit_request_path(@request.id), method: :get, class: "request-edit-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy" %>
-    <% else %>
-      <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
-        <div class='completion'>
-          <%= f.submit "完了" ,class:"completion-btn" %>
-        </div>
-      <% end %>
+    <% end %>
+    <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
+      <div class='completion'>
+        <%= f.submit "完了" ,class:"completion-btn" %>
+      </div>
     <% end %>
     <%= form_with model: [@request, @comment],class: 'comment-form', local: true do |f|%>
       <div class='comment-text-content'>
