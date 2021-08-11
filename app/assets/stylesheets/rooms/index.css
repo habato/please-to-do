@@ -1,7 +1,69 @@
-.body {
-  width: 100vh;
-  height: 100vh;
-  background-color: white;
+.rooms {
+  padding: 5vh;
+  margin: 5vh 15vw;
+  border: double 4px #67c5ff;
+}
+
+.new-room {
+  font-size: 18px;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: white;
+  border: double 4px white;
+  background-color: #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-left: 1vh;
+}
+
+.new-room:hover {
+  background: white;
+  color: #67c5ff;
+  border: double 4px #67c5ff;
+}
+
+.room-heading {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  font-size: 18px;
+  color: #FFF;
+  background: #7f9dfb;
+}
+
+.room-heading:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+.room {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.room-name {
+  text-decoration: none;
+  font-size: 24px;
+  height: 50px;
+  width: calc(100% - 20px);
+  display: inline-block;
+  color: black;
+  margin: 0 10px;
+  border: 2px solid gray;
+  padding: 5px 10px;
+  font-weight:  bold;
+}
+
+.room-name:hover {
+  background: white;
+  color: #67c5ff;
+  border: solid 1px #67c5ff;
 }
 
 .done-image {
