@@ -1,7 +1,6 @@
 <%= render "shared/header" %>
 
-
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, class: 'foom-main', local: true do |f| %>
   <div class='form-wrap'>
     <h2 class="form-header">＜新規登録＞</h2>
     <%= render "shared/error_messages", model: f.object %>
@@ -12,7 +11,6 @@
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_field :nickname, class:"input-default", maxlength:"40", placeholder:"例) 山田太郎" %>
-
 
       <div class='form-text-wrap'>
           <label class="form-text">メールアドレス</label>
@@ -32,8 +30,8 @@
       </div>
       <%= f.password_field :password_confirmation, class:"input-default", placeholder:"同じパスワードを入力してください"%>
 
-      <div class='register-btn'>
-        <%= f.submit "会員登録" , class:"register-red-btn" %>
+      <div class='foom-btn'>
+        <%= f.submit "会員登録" , class:"foom-red-btn" %>
       </div>
     </div>
   </div>
