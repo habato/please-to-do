@@ -1,19 +1,33 @@
 <%= render "shared/header" %>
-<div class="body">
-  <%= form_with model: [@room, @request], class: 'form', local: true do |f| %>
-    <div class="form-input">
-      <div class="form-input_title">
-        <%= f.text_field :title, class: 'form-request', placeholder: 'title' %>
+<%= form_with model: [@room, @request], class: 'foom-main', local: true do |f| %>
+  <div class="form-wrap">
+    <h2 class="form-header">＜新規投稿＞</h2>
+    <%= render "shared/error_messages", model: f.object %>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">タイトル</label>
+        <span class="indispensable">必須</span>
       </div>
-      <div class="form-input_content">
-        <%= f.text_field :content, class: 'form-request', placeholder: 'content' %>
+      <%= f.text_field :title, class: "input-default", placeholder: 'タイトルを入力してください' %>
+
+      <div class='form-text-wrap'>
+        <label class="form-text">内容</label>
+        <span class="indispensable">必須</span>
       </div>
-      <label class="form-image">
-        <span class="image-file">画像</span>
-        <%= f.file_field :image, class: 'hidden' %>
-      </label>
+      <%= f.text_area :content, class: "input-text", placeholder: '内容を入力してください' %>
+
+      <div class="form-image-wrap">
+        <label class="form-image">画像</label>
+        <span class="form-any">任意</span>
+      </div>
+      <%= f.file_field :image, class: 'input-image' %>
+
+      <div class='foom-btn'>
+        <%= f.submit '送信', class: 'foom-red-btn' %>
+        <%=link_to 'もどる', room_requests_path, class:"back-btn" %>
+      </div>
     </div>
-    <%= f.submit '送信', class: 'form-submit' %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 <%= render "shared/footer" %>
