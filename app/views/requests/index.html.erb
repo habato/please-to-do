@@ -1,8 +1,8 @@
 <%= render "shared/header" %>
 <div class="body">
-  <div class="room-name">
+  <h2 class="request-room-name">
     <%= @room.name %>
-  </div>
+  </h2>
   <div class="room-delete">
     <%= link_to "ルームを閉じる", room_path(@room), method: :delete, class: "room-delete_btn"%>
   </div>
