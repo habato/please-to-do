@@ -1,62 +1,70 @@
 <%= render "shared/header" %>
+
 <div class="request-show">
-  <div class="room-return">
-    <%= link_to 'ルームに戻る', room_requests_path(@request.room.id), class: "room-return-btn" %>
-  </div>
-  <div class="request">
-    <div class='request-image-content'>
-      <%= image_tag @request.image.variant(resize: '200x200'), class: 'request-image' if @request.image.attached? %>
-      <% if @request.completion.present? %>
-        <div class="done">
-          <%= image_tag "done.png", class:"done-image" %>
-        </div>
+  <div class="show-wrap">
+    <%= render "requests/room_return" %>
+    <div class="show-group">
+      <div class="request-title">
+        <%= @request.title %>
+      </div>
+      <div class='request-image-content'>
+        <%= image_tag @request.image.variant(resize: '400x400'), class: 'request-image' if @request.image.attached? %>
+        <% if @request.completion.present? %>
+          <div class="done">
+            <%= image_tag "done.png", class:"done-image" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="request-user">
+        投稿者：<%= @request.user.nickname %>
+      </div>
+      <h2 class="request-content-header">＜内容＞</h2>
+      <div class="request-content">
+        <%= @request.content %>
+      </div>
+      <% if @request.completion.blank? %>
+        <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
+          <div class='completion'>
+            <%= f.submit "完了" ,class:"completion-btn" %>
+          </div>
+        <% end %>
+        <% if current_user.id == @request.user_id %>
+          <div class="request-edit">
+            <%= link_to "編集", edit_request_path(@request.id), method: :get, class: "request-edit-btn" %>
+          </div>
+          <p class="or-text">or</p>
+          <div class="request-destroy">
+            <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy-btn" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
-    <div class="request-user">
-      <%= @request.user.nickname %>
-    </div>
-    <div class="request-title">
-      <%= @request.title %>
-    </div>
-    <div class="request-content">
-      <%= @request.content %>
-    </div>
-  </div>
-  <% if @request.completion.blank? %>
-    <% if current_user.id == @request.user_id %>
-      <%= link_to "リクエストの編集", edit_request_path(@request.id), method: :get, class: "request-edit-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", request_path(@request.id), method: :delete, class:"request-destroy" %>
-    <% end %>
-    <%= form_with url: request_completions_path(@request.id), class: 'completion-form',local: true do |f| %>
-      <div class='completion'>
-        <%= f.submit "完了" ,class:"completion-btn" %>
+    <div class="comment-group">
+      <h2 class="comment-header">＜コメント一覧＞</h2>
+      <div class="comment">
+        <% @comments.each do |comment| %>
+          <div class="comment-display">
+            <span class="comment-name"><%= comment.user.nickname%>：</span>
+            <%= comment.text%>
+            <% if current_user.id == comment.user_id %>
+              <%= link_to "削除する", request_comment_path(@request, comment), method: :delete, class:"comment-destroy" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <%= form_with model: [@request, @comment],class: 'comment-form', local: true do |f|%>
-      <div class='comment-text-content'>
-        <%= f.text_area :text, class: "comment-text" %>
-      </div>
-      <div class='comment-btn-content'> 
-        <%= f.submit "コメントする" ,class:"comment-btn" %>
-      </div>
-    <% end %>
-  <% end %>
-  <h2>＜コメント一覧＞</h2>
-  <div class="comment">
-    <% @comments.each do |comment| %>
-      <li class="comments_list">
-        <div class="commment-name">
-          <%= comment.user.nickname%>
-        </div>
-        <div class="comment-display">
-          <%= comment.text%>
-          <% if current_user.id == comment.user_id %>
-           <%= link_to "削除", request_comment_path(@request, comment), method: :delete, class:"comment-destroy" %>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
+      <% if @request.completion.blank? %>
+        <%= form_with model: [@request, @comment],class: 'comment-form', local: true do |f|%>
+          <div class='comment-text-content'>
+            <%= f.text_area :text, class: "comment-text", placeholder: 'コメントを入力してください' %>
+          </div>
+          <div class='comment-btn-content'> 
+            <%= f.submit "コメントする" ,class:"comment-btn" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render "requests/room_return" %>
   </div>
 </div>
+
 <%= render "shared/footer" %>

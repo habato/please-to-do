@@ -1,0 +1,6 @@
+<div class="room-return">
+  <%= link_to room_requests_path(@request.room.id), class: "room-return-btn" do %>
+    <%= @request.room.name %>
+    <span>＜＜戻る</span>
+  <% end %>
+</div>
