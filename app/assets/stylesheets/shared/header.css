@@ -13,6 +13,9 @@
   padding: 1vh 0;
 }
 
+.lists-left {
+  list-style: none;
+}
 
 .home {
   position: relative;
