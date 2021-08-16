@@ -1,15 +1,24 @@
 <%= render "shared/header" %>
-<div class="body">
   <div class="rooms">
-    <% if user_signed_in? %>
+    <h2 class="room-heading">ルーム一覧</h2>
+    <% if current_user.rooms.present? %>
       <% current_user.rooms.each do |room| %>
         <div class="room">
-          <div class="room-name">
-            <%= link_to room.name, room_requests_path(room) %>
-          </div>
+          <%= link_to room_requests_path(room), class: "room-name-box" do %>
+            <div class="room-name">
+              <%= room.name %>
+              <span class="enter-room">入室</span>
+            </div>
+          <%end%>
         </div>
       <% end %>
+      <div class="new-room">
+        <%= link_to "ルームを作成する", new_room_path, class: "new-room-btn" %>
+      </div>
+    <% else %>
+      <div class="dummy-room">
+          <%= link_to "ルームを作成してください", new_room_path, class: "dummy-room-name" %>
+      </div>
     <% end %>
   </div>
-</div>
 <%= render "shared/footer" %>

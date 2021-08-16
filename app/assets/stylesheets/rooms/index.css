@@ -1,9 +1,122 @@
-.body {
-  width: 100vh;
-  height: 100vh;
-  background-color: white;
+.rooms {
+  padding: 5vh;
+  margin: 5vh 15vw;
 }
 
-.done-image {
-  width: 200px;
+.room-heading {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  font-size: 24px;
+  color: #FFF;
+  background: #7f9dfb;
+  font-weight:  bold;
+}
+
+.room-heading:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+.room {
+  text-align: left;
+  padding: 3vh 2vh 0;
+}
+
+.room-name-box {
+  text-decoration: none;
+  font-size: 30px;
+  height: 70px;
+  width: calc(100% - 20px);
+  display: inline-block;
+  color: black;
+  margin: 10px;
+  border: 2px solid gray;
+  padding: 12px 0 5px;
+  font-weight:  bold;
+  overflow: auto;
+}
+
+.room-name-box:hover {
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+}
+
+.room-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.enter-room {
+  color: black;
+  border: 2px solid gray;
+  padding: 0 10px;
+}
+
+.room-name-box:hover .enter-room {
+  background: white;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+}
+
+.request-room-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.dummy-room {
+  margin: 100px auto;
+  display: table;
+}
+
+.dummy-room-name {
+  text-decoration: none;
+  font-size: 30px;
+  height: 80px;
+  width: 50%;
+  display: inline-block;
+  color: #67c5ff;
+  border: 3px solid #67c5ff;
+  font-weight:  bold;
+  background-color: white;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.dummy-room-name:hover {
+  background: #67c5ff;
+  color: white;
+  border: 6px double white;
+}
+
+.new-room {
+  margin: 50px auto 0;
+  display: table;
+}
+
+.new-room-btn {
+  text-decoration: none;
+  font-size: 30px;
+  height: 70px;
+  width: 40%;
+  color: #67c5ff;
+  border: 3px solid #67c5ff;
+  font-weight:  bold;
+  background-color: white;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.new-room-btn:hover {
+  background: #67c5ff;
+  color: white;
+  border: 6px double white;
 }

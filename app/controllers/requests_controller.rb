@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
   before_action :done, only: [:edit, :update, :destroy]
 
   def index
-    @requests = @room.requests.includes(:user)
+    @requests = @room.requests.includes(:user).order(created_at: 'DESC')
   end
 
   def new

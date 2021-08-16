@@ -1,16 +1,39 @@
 <%= render "shared/header" %>
-<div class="body">
-  <div class="room-name">
-    <%= @room.name %>
-  </div>
-  <div class="room-delete">
-    <%= link_to "ルームを閉じる", room_path(@room), method: :delete, class: "room-delete_btn"%>
-  </div>
-  <div class="new-request">
-    <%= link_to "お願いする", new_room_request_path, class: "new-request_btn" %>
-  </div>
-  <div class="requests">
-    <%= render partial: 'shared/request', collection: @requests %>
+<div class="request-index">
+  <div class="index-wrap">
+    <div class="index-header">
+      <%= link_to 'ルーム一覧＜＜戻る', root_path, class: "room-return-btn"%>
+      <h2 class="request-room-name">
+        ＜<%= @room.name %>＞
+      </h2>
+      <div class="new-request">
+        <%= link_to "新規リクエスト", new_room_request_path, class: "new-request_btn" %>
+      </div>
+    </div>
+
+    <div class="index-group">
+      <%= render partial: 'shared/request', collection: @requests %>
+
+      <% if @requests.length == 0 %>
+        <ul class="request-lists">
+          <li class="request-list">
+            <%= link_to new_room_request_path, class:'request-link' do %>
+              <div class="index-request-title">サンプルタイトル</div>
+              <%= image_tag "sample.png", class:"index-done-image" %>
+              <div class="index-request-user">投稿者：サンプル</div>
+              <div class="index-request-content">リクエストを投稿してください</div>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="index-footer">
+      <%= link_to '＜＜戻る', root_path, class: "room-return-btn"%>
+      <div class="room-delete">
+        <%= link_to "ルームを削除する", room_path(@room), method: :delete, class: "room-delete_btn"%>
+      </div>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>

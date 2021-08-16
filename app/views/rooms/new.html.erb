@@ -1,36 +1,38 @@
 <%= render "shared/header" %>
 
-<div class='chat-room-form'>
-  <h2>＜新規チャットルーム＞</h2>
-  <%=form_with model: @room, local: true do |f|%>
-    <div class='chat-room-form_field'>
-      <div class='chat-room-form_field--left'>
-        <%= f.label :チャットルーム名, class: 'chat-room-form_label'%>
-      </div>
-      <div class='chat-room-form_field--right'>
-        <%= f.text_field :name, class: 'chat_room_name chat-room-form_input' %>
-      </div>
-    </div>
+<%=form_with model: @room, class: 'foom-main', local: true do |f|%>
+  <div class='form-wrap'>
+    <h2 class="form-header">＜新規ルーム＞</h2>
+    <%= render "shared/error_messages", model: f.object %>
 
-    <div class='chat-room-form_field'>
-      <div class='chat-room-form_field--left'>
-        <label class='chat-room-form_label' for='chat_room_チャットメンバー'>チャットメンバー</label>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">ルーム名</label>
+        <span class="indispensable">必須</span>
       </div>
-      <div class='chat-room-form_field--right'>
-        <select name="room[user_ids][]">
-          <option value="">チャットするユーザーを選択してください</option>
-          <% User.where.not(id: current_user.id).each do |user| %>
-            <option value=<%= user.id %>><%= user.nickname %></option>
-          <% end %>
-        </select>
-        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <%= f.text_field :name, class: "input-default", placeholder: "ルーム名を入力してください(20文字まで)" %>
+
+      <div class='form-text-wrap'>
+        <label class='form-text'>参加メンバー</label>
+        <span class="form-any">任意</span>
       </div>
-      <div class="chat-room-form_attention">※選択しなければ自分のみのルームになります</div>
+
+      <select class= "select-default" name="room[user_ids][]">
+        <option value="">ユーザーを選択してください</option>
+        <% User.where.not(id: current_user.id).each do |user| %>
+          <option value=<%= user.id %>><%= user.nickname %></option>
+        <% end %>
+      </select>
+      <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+
+      <div class="room-form-attention">※選択しなければ自分のみのルームになります</div>
+      <div class='foom-btn'>
+          <%= f.submit 'ルーム作成', class: 'foom-red-btn'%>
+          <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
     </div>
-    <div class='chat-room-form_field'>
-        <%= f.submit 'ルーム作成', class: 'chat-room-form_action-btn'%>
-    </div>
-  <% end %>
+  </div>
+<% end %>
 </div>
 
 <%= render "shared/footer" %>
