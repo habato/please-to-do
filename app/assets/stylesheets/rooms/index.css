@@ -3,30 +3,11 @@
   margin: 5vh 15vw;
 }
 
-.new-room {
-  font-size: 18px;
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: white;
-  border: double 4px white;
-  background-color: #67c5ff;
-  border-radius: 3px;
-  transition: .4s;
-  margin-left: 1vh;
-}
-
-.new-room:hover {
-  background: white;
-  color: #67c5ff;
-  border: double 4px #67c5ff;
-}
-
 .room-heading {
   display: inline-block;
   position: relative;
   padding: 15px 20px;
-  font-size: 18px;
+  font-size: 24px;
   color: #FFF;
   background: #7f9dfb;
   font-weight:  bold;
@@ -44,28 +25,98 @@
 
 .room {
   text-align: left;
-  margin-top: 20px;
+  padding: 3vh 2vh 0;
 }
 
-.room-name {
+.room-name-box {
   text-decoration: none;
-  font-size: 24px;
-  height: 50px;
+  font-size: 30px;
+  height: 70px;
   width: calc(100% - 20px);
   display: inline-block;
   color: black;
-  margin: 0 10px;
+  margin: 10px;
   border: 2px solid gray;
-  padding: 5px 10px;
+  padding: 12px 0 5px;
   font-weight:  bold;
+  overflow: auto;
 }
 
-.room-name:hover {
+.room-name-box:hover {
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+}
+
+.room-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.enter-room {
+  color: black;
+  border: 2px solid gray;
+  padding: 0 10px;
+}
+
+.room-name-box:hover .enter-room {
   background: white;
   color: #67c5ff;
-  border: solid 1px #67c5ff;
+  border: solid 2px #67c5ff;
 }
 
-.done-image {
-  width: 200px;
+.request-room-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.dummy-room {
+  margin: 100px auto;
+  display: table;
+}
+
+.dummy-room-name {
+  text-decoration: none;
+  font-size: 30px;
+  height: 80px;
+  width: 50%;
+  display: inline-block;
+  color: #67c5ff;
+  border: 3px solid #67c5ff;
+  font-weight:  bold;
+  background-color: white;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.dummy-room-name:hover {
+  background: #67c5ff;
+  color: white;
+  border: 6px double white;
+}
+
+.new-room {
+  margin: 50px auto 0;
+  display: table;
+}
+
+.new-room-btn {
+  text-decoration: none;
+  font-size: 30px;
+  height: 70px;
+  width: 40%;
+  color: #67c5ff;
+  border: 3px solid #67c5ff;
+  font-weight:  bold;
+  background-color: white;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.new-room-btn:hover {
+  background: #67c5ff;
+  color: white;
+  border: 6px double white;
 }

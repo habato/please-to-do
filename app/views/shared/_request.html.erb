@@ -1,21 +1,27 @@
-<div class="request">
-  <div class="request-user">
-    <%= request.user.nickname %>
-  </div>
-  <%= link_to request_path(request) do %>
-    <div class="request-title">
-      <%= request.title %>
-    </div>
-    <div class="request-content">
-      <%= request.content %>
-    </div>
-    <div class='request-image-content'>
-      <%= image_tag request.image.variant(resize: '200x200'), class: 'request-image' if request.image.attached? %>
+<ul class="request-lists">
+  <li class="request-list">
+    <%= link_to request_path(request), class:'request-link' do %>
+      <div class="index-request-title">
+        <%= request.title %>
+      </div>
+      <div class='index-request-image-content'>
+        <% if request.image.attached? %>
+          <%= image_tag request.image, class: 'index-request-image' %>
+        <% else %>
+          <%= image_tag "no_image_logo.png", class:"index-done-image" %>
+        <% end %>
+      </div>
+      <div class="index-request-user">
+        投稿者：<%= request.user.nickname %>
+      </div>
+      <div class="index-request-content">
+        <%= request.content %>
+      </div>
       <% if request.completion.present? %>
-        <div class='done'>
-          <%= image_tag "done.png", class:"done-image" %>
+        <div class='index-done'>
+          <%= image_tag "done.png", class:"index-done-image" %>
         </div>
       <% end %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </li>
+</ul>

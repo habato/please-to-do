@@ -1,0 +1,127 @@
+.request-index{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.index-wrap{
+  width: 70%;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+}
+
+.index-group {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.request-lists {
+  width: 33.3%;
+  height: 55vh;
+  display: flex;
+  position: relative;
+  margin: auto;
+}
+
+.request-list {
+  flex-grow: 1;
+  list-style: none;
+  background: lightblue;
+  overflow: auto;
+  border: 1px solid white;
+}
+
+.index-done {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.index-done-image {
+  width: 28vh;
+}
+
+.request-link {
+  text-decoration: none;
+  color: black;
+}
+
+.index-request-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.index-request-image {
+  width: 70%;
+  max-height :300px;
+}
+
+.index-request-user{
+  font-size: 16px;
+}
+
+.index-request-content {
+  font-size: 20px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 10px;
+  height: 40%;
+  overflow: auto;
+}
+
+.index-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.request-room-name{
+  font-size: 24px;
+  margin: auto;
+}
+
+.new-request_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #ea352d;
+  background: white;
+  border: 2px solid #ea352d;
+  transition: .4s;
+  font-size: 24px;
+}
+
+.new-request_btn:hover {
+  background: #ea352d;
+  color: #f5f5f5;
+}
+
+.index-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.room-delete_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: white;
+  background: lightgray;
+  transition: .4s;
+  font-size: 24px;
+  margin-left: auto;
+}
+
+.room-delete_btn:hover {
+  background: #f5f5f5;
+  color: #ea352d;
+  border: 2px solid #ea352d;
+}

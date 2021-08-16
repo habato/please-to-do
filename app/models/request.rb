@@ -6,7 +6,7 @@ class Request < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   with_options presence: true do
-    validates :title
+    validates :title, length: { maximum: 40 }
     validates :content
   end
 end

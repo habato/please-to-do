@@ -2,16 +2,25 @@
 
 <div class="request-show">
   <div class="show-wrap">
-    <%= render "requests/room_return" %>
+    <div class="room-return">
+      <%= link_to room_requests_path(@request.room.id), class: "room-return-btn" do %>
+        <%= @request.room.name %>
+        <span>＜＜戻る</span>
+      <% end %>
+    </div>
     <div class="show-group">
       <div class="request-title">
         <%= @request.title %>
       </div>
       <div class='request-image-content'>
-        <%= image_tag @request.image.variant(resize: '400x400'), class: 'request-image' if @request.image.attached? %>
+        <% if @request.image.attached? %>
+          <%= image_tag @request.image.variant(resize: '400x400'), class: 'request-image'%>
+        <% else %>
+          <%= image_tag "no_image_logo.png", class:"request-image" %>
+        <% end %>
         <% if @request.completion.present? %>
-          <div class="done">
-            <%= image_tag "done.png", class:"done-image" %>
+          <div class="show-done">
+            <%= image_tag "done.png", class:"show-done-image" %>
           </div>
         <% end %>
       </div>
@@ -63,7 +72,7 @@
         <% end %>
       <% end %>
     </div>
-    <%= render "requests/room_return" %>
+    <%= link_to '＜＜戻る', room_requests_path(@request.room.id), class: "room-return-btn"%>
   </div>
 </div>
 
