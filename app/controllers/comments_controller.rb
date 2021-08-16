@@ -2,14 +2,14 @@ class CommentsController < ApplicationController
   before_action :set_request, only: :create
   before_action :outsider, only: :create
   before_action :done, only: :create
-  
+
   def create
     @comments = @request.comments.includes(:user)
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to request_path(@comment.request.id)
     else
-      render template: "requests/show"
+      render template: 'requests/show'
     end
   end
 
