@@ -25,7 +25,7 @@ ToDo(すること)をplease(お願い)するアプリケーション。
 
 # 本番環境
 ## URL
-```https://please-to-do.herokuapp.com/```
+https://please-to-do.herokuapp.com/
 ## Basic認証
 * ID:sano
 * Pass:sanosano
