@@ -3,4 +3,5 @@
 <p>ニックネーム : <%= @user.nickname %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <%= render "shared/follow_button", user: @user%> 
-<%= render "shared/footer" %>
+<%= link_to 'フォロー', user_followings_path(@user), class: "home" %>
+<%= link_to 'フォロワー', user_followers_path(@user), class: "home" %>
