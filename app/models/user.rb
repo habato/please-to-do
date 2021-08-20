@@ -40,7 +40,7 @@ class User < ApplicationRecord
     if search != ""
       User.where('nickname LIKE(?)', "%#{search}%")
     else
-      User.all
+      nil
     end
   end
 # //検索機能に関する記述//
