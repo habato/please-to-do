@@ -18,9 +18,9 @@ class User < ApplicationRecord
   has_many :completions
   has_many :comments
 
+# フォロー機能に関する記述
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
-
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
@@ -33,4 +33,15 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+# //フォロー機能に関する記述//
+
+# 検索機能に関する記述
+  def self.search(search)
+    if search != ""
+      User.where('nickname LIKE(?)', "%#{search}%")
+    else
+      User.all
+    end
+  end
+# //検索機能に関する記述//
 end
