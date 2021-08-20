@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+
+<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+<div class="contents row">
+  <% @users.each do |user| %>
+    <h3 class='item-name'>
+      <%= user.nickname %>
+      <%= render "shared/follow_button", user: user %>
+    </h3>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>
