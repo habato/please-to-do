@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :set_room, only: [:edit, :update]
+
   def index
   end
 
@@ -15,6 +17,17 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @room.update(room_params)
+      redirect_to room_requests_path(@room)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     room = Room.find(params[:id])
     room.destroy if room.users.exists?(current_user.id)
@@ -25,5 +38,9 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, user_ids: [])
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 end

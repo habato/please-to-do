@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, only: [:new, :create, :destroy] do
+  resources :rooms, only: [:new, :create, :edit, :update, :destroy] do
     resources :requests, only: [:index, :new, :create]
   end
 

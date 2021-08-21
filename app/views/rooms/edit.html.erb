@@ -1,0 +1,26 @@
+<%=form_with model: @room, class: 'foom-main', local: true do |f|%>
+<div class='form-text-wrap'>
+        <label class='form-text'>参加メンバー</label>
+        <span class="form-any">任意</span>
+      </div>
+
+      <select class= "select-default" name="room[user_ids][]">
+        <option value="">ユーザーを選択してください</option>
+        <% current_user.followings.each do |user| %>
+          <% if !@room.users.exists?(id: user.id) %>
+            <option value=<%= user.id %>><%= user.nickname %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <% @room.users.each do |user|%>
+        <input name="room[user_ids][]" type="hidden" value=<%= user.id %>>
+      <% end %>
+
+      <div class='foom-btn'>
+          <%= f.submit 'ルーム作成', class: 'foom-red-btn'%>
+          <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
