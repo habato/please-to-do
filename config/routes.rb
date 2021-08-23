@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :requests, only: [:index, :new, :create]
+    resources :users, only: [:destroy]
   end
 
   resources :requests, only: [:show, :edit, :update, :destroy] do

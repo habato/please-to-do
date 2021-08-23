@@ -21,7 +21,14 @@
             </div>
           <% end %>
         </div>
-        <%= link_to 'メンバー招待', edit_room_path(@room), class: "room-invitation-btn"%>
+        <div class="room-invitation">
+          <%= link_to 'メンバー招待', edit_room_path(@room), class: "room-invitation-btn"%>
+        </div>
+        <div class="room-exit">
+          <% if @room.users.length > 1%>
+            <%= link_to '退出する', room_user_path(@room, current_user), method: :delete, class: "room-exit-btn"%>
+          <% end %>
+        </div>
       </div>
   </div>
   <div class="show-footer">
