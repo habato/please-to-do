@@ -9,4 +9,11 @@ class UsersController < ApplicationController
     @users = User.search(params[:keyword])
     render :show if @users == nil
   end
+
+  def destroy
+    room = Room.find(params[:room_id])
+    user = RoomUser.find_by(room_id: room.id, user_id: params[:id])
+    user.destroy
+    redirect_to root_path
+  end
 end

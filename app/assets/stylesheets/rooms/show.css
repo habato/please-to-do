@@ -32,3 +32,43 @@
   background: white;
   border: 4px double #67c5ff;
 }
+
+.room-exit-btn {
+  margin-top: 30px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 30px;
+  text-decoration: none;
+  color: white;
+  background: lightgray;
+  transition: .4s;
+  font-size: 24px;
+  margin-left: auto;
+  border: 2px solid lightgray;
+}
+
+.room-exit-btn:hover {
+  background: white;
+  color: #ea352d;
+  border: 2px solid #ea352d;
+}
+
+.room-delete_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: white;
+  background: lightgray;
+  transition: .4s;
+  font-size: 24px;
+  margin-left: auto;
+}
+
+.room-delete_btn:hover {
+  background: #f5f5f5;
+  color: #ea352d;
+  border: 2px solid #ea352d;
+}
