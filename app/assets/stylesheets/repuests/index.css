@@ -77,11 +77,26 @@
 .index-header {
   display: flex;
   justify-content: space-between;
+  background-color: #7f9dfb;
 }
 
-.request-room-name{
+.request-room-name {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 30px;
+  text-decoration: none;
+  color: #7f9dfb;
+  background: white;
+  border: 2px solid #7f9dfb;
+  transition: .4s;
   font-size: 24px;
-  margin: auto;
+}
+
+.request-room-name:hover {
+  color: white;
+  background: #7f9dfb;
+  border: 2px solid white;
 }
 
 .new-request_btn {

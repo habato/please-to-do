@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:edit, :update]
+  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :redirect, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -17,6 +18,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -29,8 +33,7 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    room = Room.find(params[:id])
-    room.destroy if room.users.exists?(current_user.id)
+    @room.destroy
     redirect_to root_path
   end
 
@@ -42,5 +45,9 @@ class RoomsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:id])
+  end
+
+  def redirect
+    redirect_to root_path unless @room.users.exists?(current_user.id)
   end
 end

@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+
+<div class="room-show">
+  <div class="show-wrap">
+    <div class="show-header">
+      <div class="room-return">
+      <%= link_to room_requests_path(@room), class: "room-return-btn" do %>
+        <%= @room.name %>
+        <span>＜＜戻る</span>
+      <% end %>
+    </div>
+    </div>
+    <div class="room-show-group">
+      <div class="show-contents">
+        <h2 class="show-title">＜ルームメンバー＞</h2>
+        <div class="room-users">
+          <% @room.users.each do |user| %>
+            <div class="user-show-content">
+              <span class="follow-user-nickname"><%= user.nickname %></span>
+              <%= render "shared/follow_button", user: user %>
+            </div>
+          <% end %>
+        </div>
+        <%= link_to 'メンバー招待', edit_room_path(@room), class: "room-invitation-btn"%>
+      </div>
+  </div>
+  <div class="show-footer">
+    <%= link_to '＜＜戻る', root_path, class: "room-return-btn"%>
+    <div class="room-delete">
+      <%= link_to "ルームを削除する", room_path(@room), method: :delete, class: "room-delete_btn"%>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

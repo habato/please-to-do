@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :outsider, only: [:index, :new, :create]
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :redirect, only: [:edit, :update, :destroy]
-  before_action :done, only: [:edit, :update, :destroy]
+  before_action :done, only: [:edit, :update]
 
   def index
     @requests = @room.requests.includes(:user).order(created_at: 'DESC')
