@@ -1,3 +1,30 @@
 .room-form-attention {
   font-size: 14px;
+  margin-top: 10px;
+}
+
+.form-explanation {
+  font-size: 14px;
+}
+
+.room-edit-message {
+  margin-top: 30px;
+}
+
+.check-boxes {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: auto;
+}
+
+.label-check-box {
+  cursor: pointer;
+  margin-top: 5px;
+  border-bottom: 1px solid gray;
 }

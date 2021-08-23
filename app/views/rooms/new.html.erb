@@ -15,10 +15,16 @@
       <div class='form-text-wrap'>
         <label class='form-text'>参加メンバー</label>
         <span class="form-any">任意</span>
+        <p class="form-explanation">チェックを入れてください</p>
       </div>
 
         <div class="check-boxes">
-          <%= f.collection_check_boxes :user_ids, current_user.followings, :id, :nickname %>
+          <%= f.collection_check_boxes :user_ids, current_user.followings, :id, :nickname do |b| %>
+            <%= b.label class:"label-check-box" do%>
+              <%= b.check_box class:"check-box" %>
+              <%= b.text %>
+            <%end%>
+          <% end %>
         </div>
       <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
 

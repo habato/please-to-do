@@ -1,16 +1,37 @@
 <%= render "shared/header" %>
 
-<%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
-<div class="contents row">
-  <% @users.each do |user| %>
-    <h3 class='item-name'>
-      <%= user.nickname %>
-      <%= render "shared/follow_button", user: user %>
-    </h3>
-  <% end %>
+<div class="user-search">
+  <div class="search-wrap">
+    <div class="search-header">
+      <div class="room-return">
+        <%= link_to 'プロフィール＜＜戻る', user_path(id: current_user.id), class: "room-return-btn"%>
+      </div>
+    </div>
+    <div class="user-search-group">
+      <div class="search-bar">
+        <%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+        <% end %>
+      </div>
+      <div class="search-contents">
+        <h2 class="search-title">＜検索結果＞</h2>
+        <% if @users.present? %>
+          <% @users.each do |user| %>
+            <div class='search-user'>
+              <%= user.nickname %>
+              <%= render "shared/follow_button", user: user %>
+            </div>
+          <% end %>
+          <% else %>
+            <h3 class="no-match-search">一致するユーザーがいません</h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="show-footer">
+      <%= link_to '＜＜戻る', user_path(id: current_user.id), class: "room-return-btn"%>
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer" %>

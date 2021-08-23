@@ -30,7 +30,7 @@
 
     <div class="index-footer">
       <%= link_to '＜＜戻る', root_path, class: "room-return-btn"%>
-      <%= link_to '招待', edit_room_path(@room), class: "room-return-btn"%>
+      <%= link_to 'メンバー招待', edit_room_path(@room), class: "room-return-btn"%>
       <div class="room-delete">
         <%= link_to "ルームを削除する", room_path(@room), method: :delete, class: "room-delete_btn"%>
       </div>
