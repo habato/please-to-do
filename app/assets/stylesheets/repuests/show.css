@@ -16,7 +16,7 @@
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
-  padding-top: 20px;
+  padding: 20px 0;
   background-color: white;
   position: relative;
 }

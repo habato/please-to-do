@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+
+<%=form_with model: @room, class: 'foom-main', local: true do |f|%>
+  <div class='form-wrap'>
+    <h2 class="form-header">＜メンバー招待＞</h2>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class='form-text'>招待メンバー</label>
+        <span class="form-any">任意</span>
+        <p class="form-explanation">チェックを入れてください</p>
+      </div>
+
+      <% if @room.users.length != current_user.followings.length + 1 %>
+        <div class="check-boxes">
+          <% current_user.followings.each do |user| %>
+            <% if !@room.users.exists?(id: user) %>
+              <label class="label-check-box">
+                <%= check_box_tag name="room[user_ids][]", value = user.id %>
+                <span><%= user.nickname %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      <%else%>
+        <h3 class="room-edit-message">フォロー中のユーザーは全員参加しています</h3>
+      <% end %>
+      <% @room.users.each do |user|%>
+        <input name="room[user_ids][]" type="hidden" value=<%= user.id %>>
+      <% end %>
+
+      <div class='foom-btn'>
+          <%= f.submit '招待する', class: 'foom-red-btn'%>
+          <%=link_to 'もどる', room_path(@room), class:"back-btn" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "shared/footer" %>
