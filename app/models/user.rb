@@ -18,33 +18,29 @@ class User < ApplicationRecord
   has_many :completions
   has_many :comments
 
-# フォロー機能に関する記述
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # フォロー機能に関する記述
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
   def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(followed_id: other_user)
-    end
+    relationships.find_or_create_by(followed_id: other_user) unless self == other_user
   end
+
   def unfollow(other_user)
-    relationship = self.relationships.find_by(followed_id: other_user)
+    relationship = relationships.find_by(followed_id: other_user)
     relationship.destroy if relationship
   end
-  def following?(other_user)
-    self.followings.include?(other_user)
-  end
-# //フォロー機能に関する記述//
 
-# 検索機能に関する記述
-  def self.search(search)
-    if search != ""
-      User.where('nickname LIKE(?)', "%#{search}%")
-    else
-      nil
-    end
+  def following?(other_user)
+    followings.include?(other_user)
   end
-# //検索機能に関する記述//
+  # //フォロー機能に関する記述//
+
+  # 検索機能に関する記述
+  def self.search(search)
+    User.where('nickname LIKE(?)', "%#{search}%") if search != ''
+  end
+  # //検索機能に関する記述//
 end

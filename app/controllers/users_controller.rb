@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def search
     @user = current_user
     @users = User.search(params[:keyword])
-    render :show if @users == nil
+    render :show if @users.nil?
   end
 
   def destroy
