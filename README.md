@@ -30,8 +30,8 @@ https://please-to-do.herokuapp.com/
 * ID:sano
 * Pass:sanosano
 ## テスト用アカウント
-* Nickname:test
-* Pass:test1111
+* Nickname　:　test
+* Pass　:　test1111
 # 制作背景(意図)
 * 既存のタスク共有アプリは仕事などでの使用が想定されているため、ちょっとしたお願いをするにはハードルが高いと感じた。
 * 「人に頼むほどのことかな？」と思うことを気軽にお願いできるようにしたい。
