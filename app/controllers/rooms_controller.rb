@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
 
   def update
     if @room.update(room_params)
-      redirect_to room_requests_path(@room)
+      redirect_to room_path(@room)
     else
       render :edit
     end
