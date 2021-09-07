@@ -10,25 +10,26 @@
         <label class="form-text">ルーム名</label>
         <span class="indispensable">必須</span>
       </div>
-        <%= f.text_field :name, class: "input-default", placeholder: "ルーム名を入力してください(20文字まで)" %>
+      <%= f.text_field :name, class: "input-default", placeholder: "ルーム名を入力してください(20文字まで)" %>
 
-      <div class='form-text-wrap'>
-        <label class='form-text'>参加メンバー</label>
-        <span class="form-any">任意</span>
-        <p class="form-explanation">チェックを入れてください</p>
-      </div>
-
+      <% if current_user.followings.present? %>
+        <div class='form-text-wrap'>
+          <label class='form-text'>参加メンバー</label>
+          <span class="form-any">任意</span>
+          <p class="form-explanation">チェックを入れてください</p>
+        </div>
         <div class="check-boxes">
           <%= f.collection_check_boxes :user_ids, current_user.followings, :id, :nickname do |b| %>
             <%= b.label class:"label-check-box" do%>
               <%= b.check_box class:"check-box" %>
               <%= b.text %>
-            <%end%>
+            <% end %>
           <% end %>
         </div>
+        <div class="room-form-attention">※選択しなければ自分のみのルームになります</div>
+      <% end %>
       <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
 
-      <div class="room-form-attention">※選択しなければ自分のみのルームになります</div>
       <div class='foom-btn'>
           <%= f.submit 'ルーム作成', class: 'foom-red-btn'%>
           <%=link_to 'もどる', root_path, class:"back-btn" %>
